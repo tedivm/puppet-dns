@@ -51,7 +51,7 @@ define dns::zone (
       owner   => $dns::server::params::owner,
       group   => $dns::server::params::group,
       mode    => '0644',
-      require => [Class['concat::setup'], Class['dns::server']],
+      require => [Class['dns::server']],
       notify  => Exec["bump-${zone}-serial"]
     }
     concat::fragment{"db.${name}.soa":
